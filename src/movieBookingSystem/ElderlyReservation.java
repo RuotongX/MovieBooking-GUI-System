@@ -1,4 +1,9 @@
 package movieBookingSystem;
+/**
+ * This is the subclass for seatreservation which set the price value for elderly.
+ * @author 16921494
+ *
+ */
 
 public class ElderlyReservation extends SeatReservation {
 	public ElderlyReservation(char row,int col) {

@@ -1,6 +1,5 @@
 package movieBookingSystem;
 import java.util.ArrayList;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,6 +20,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Font;
+/**
+ * This class is used to create the gui JFrame by using the action listener and JPanel.
+ * @author 16921494
+ *
+ */
 
 public class MovieBookingGUI extends JFrame {
 	private JRadioButton adult;
@@ -37,7 +41,11 @@ public class MovieBookingGUI extends JFrame {
 	private JLabel title;
 	int oo = 0;
 	ButtonGroup buttonGroup = new ButtonGroup();
-	
+	/**
+	 * This method is used to get the information of the select movie in the list, 
+	 * give each button which is on the panel value from the arraylist which store the already booked seat
+	 * and only let new button is avaliable for user.
+	 */
 	public void eventHandleListSelection() {
 		int index = this.DefaultListModel.getSelectedIndex();
 		oo = index;
@@ -45,7 +53,6 @@ public class MovieBookingGUI extends JFrame {
 			for(int j = 0;j<sd.getMovieSessionList()[index].getNUM_ROWS();j++) {
 				char a =this.converIndexToRow(i);
 				if(sd.getMovieSessionList()[index].getSeats(a, j)!=null) {
-//					this.seatingButtons[i][j].setEnabled(false);
 					switch(sd.getMovieSessionList()[index].getSeats(a, j).getType()) {
 					case 'C':
 						this.seatingButtons[i][j].setBackground(Color.YELLOW);
@@ -71,11 +78,17 @@ public class MovieBookingGUI extends JFrame {
 		this.book.setEnabled(false);
 		this.new1.setEnabled(true);
 	}
+	/**
+	 * This method is used to exit the book phase if user do not want to book the seat.
+	 */
 	public void eventHandleExit() {
 		this.eventHandleListSelection();
 		currentReservation.clear();
-		
 	}
+	/**
+	 * This method is used the booking phase avaliable for users.
+	 * if user have not select anyone of the movie the error window will display.
+	 */
 	public void eventHandleNew() {
 	    try {
 	    	eventHandleListSelection();
@@ -89,7 +102,10 @@ public class MovieBookingGUI extends JFrame {
 		this.exit.setEnabled(true);
 		this.book.setEnabled(true);
 		currentReservation = new ArrayList<SeatReservation>();
-		
+		/**
+		 * This is the method that display each seat has customer or not, each type of customer has different to color
+		 * And the color seat can not be selected, the other empty seat can be selected.
+		 */
 	}
 	public void eventHandleAdult() {
 		for(int i = 0;i<sd.getMovieSessionList()[oo].getNUM_COLS();i++) {
@@ -114,7 +130,12 @@ public class MovieBookingGUI extends JFrame {
 			}
 		}
 	}
-
+/**
+ * This method is used to get the button that been selected in button 2d array, while select, the color will change to green,
+ * and this position of seat will be added into the current select arraylist.
+ * @param i
+ * @param j
+ */
 	public void eventHandleButton(int i,int j) {
 		char a = this.converIndexToRow(i);
 		if (adult.isSelected()) {
@@ -142,6 +163,11 @@ public class MovieBookingGUI extends JFrame {
 		}
 		
 	}
+	/**
+	 * This method is used to take each element from the current select arraylist and check they are valid or not
+	 * if valid add them to the movie session object's arraylist and store the value .
+	 * else show the error window.
+	 */
 	public void eventHandleBook() {
 		boolean success = sd.getMovieSessionList()[oo].applyBookings(currentReservation);
 		if(success == true) {
@@ -169,6 +195,10 @@ public class MovieBookingGUI extends JFrame {
 			this.eventHandleListSelection();
 		}
 	}
+	/**
+	 * This is the constructor of this class, it create every element in this gui and give them the action listener to call the method that will
+	 * need to be use.
+	 */
 	public MovieBookingGUI()  {
 		
 		setLayout(null);
@@ -283,11 +313,15 @@ public class MovieBookingGUI extends JFrame {
 			}
 		});
 		
-		setSize(1280, 800); 
+		setSize(1280, 850); 
 		this.update();
 		
 		
 	}
+	/**
+	 * This method is used when user open the window.
+	 * let user can only select a movie and use new button.
+	 */
 	private void eventHandleWindowOpened() {
 		this.adult.setEnabled(false);
 		this.elderly.setEnabled(false);
@@ -303,6 +337,9 @@ public class MovieBookingGUI extends JFrame {
 		}
 		
 	}
+	/**
+	 * Make the defaultlistmodel get the new information from movesession arraylist.
+	 */
 	public void update() {
 		this.DefaultListModel.setListData(this.sd.getMovieSessionList());
 		

@@ -1,5 +1,11 @@
 package movieBookingSystem;
-
+/**
+ * This is a abstract class which has adultReservation,childReservation and elderlyReservation three subclass
+ * and also has the method get price method which can be used by these three subclass
+ * The getType method is used to override by subclass, child return c, adult return a, elderly retrn e.
+ * @author 16921494
+ *
+ */
 public abstract class SeatReservation {
 	private char row;
 	private int col;

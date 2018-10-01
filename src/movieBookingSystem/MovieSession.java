@@ -1,7 +1,11 @@
 package movieBookingSystem;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
+/**
+ * This is the class which store the basic information of a movie.
+ * @author 16921494
+ *
+ */
 
 
 public class MovieSession implements Comparable{
@@ -86,6 +90,13 @@ public class MovieSession implements Comparable{
 			return true;
 		}
 	}
+	/**
+	 * This method is to get an arraylist and check each element is valid or not,
+	 * if a child book g or book m without adult or elderly, then will return false,
+	 * if the input booking seats is already exsit, return false.
+	 * @param reservations
+	 * @return
+	 */
 	public boolean applyBookings(ArrayList reservations) {
 		boolean child = false;
 		int counter = 0;
@@ -125,6 +136,9 @@ public class MovieSession implements Comparable{
 		
 		return true;
 	}
+	/**
+	 * This method will display the seats information of a movie in console.
+	 */
 	public void printSeats() {
 		for(int i = 0;i<this.NUM_ROWS;i++) {
 			for(int j =0;j<this.NUM_COLS;j++) {
@@ -141,6 +155,9 @@ public class MovieSession implements Comparable{
 	public String toString() {
 		return "Movie Name: "+this.movieName+"        Rating: "+this.rating+"        Session Time: "+this.sessionTime.toString();
 	}
+	/**
+	 * This method override the Comparable interface which compare the time value.if time is equal use the name to compare.
+	 */
 	public int CompareTo(Object o) {
 		MovieSession m = (MovieSession) o;
 		if(m.getSessionTime().timecalaulator()<this.getSessionTime().timecalaulator()) {
@@ -166,7 +183,10 @@ public class MovieSession implements Comparable{
 	public static int getNUM_COLS() {
 		return NUM_COLS;
 	}
-	
+	/**
+	 * This is the main class.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		JFrame frame = new MovieBookingGUI();
 		frame.setVisible(true);

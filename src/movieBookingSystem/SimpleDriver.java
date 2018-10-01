@@ -1,7 +1,11 @@
 package movieBookingSystem;
 import java.util.ArrayList;
 import java.util.Collections;
-
+/**
+ * This class is used to create a movieSession arraylist to store each type of array
+ * @author 16921494
+ *
+ */
 
 
 public class SimpleDriver{
@@ -10,7 +14,9 @@ public class SimpleDriver{
 	Time t2 = new Time(11,30,0);
 	Time t3 = new Time(15,0,0);
 	Time t4 = new Time(20,15,0);
-	
+	/**
+	 * This is the constructor of this class which create many different movieSession object
+	 */
 	public SimpleDriver() {
 		this.movielist = new ArrayList();
 		MovieSession ironman = new MovieSession("Iron man",'G',t1);
@@ -24,6 +30,10 @@ public class SimpleDriver{
 		movielist.add(batman);
 		movielist.add(danger);
 	}
+	/**
+	 * This method use the Collections.sort which use the comparable interface.
+	 * @param aMovieSession
+	 */
 	public void addMovieSession(MovieSession aMovieSession) {
 		this.movielist.add(aMovieSession);
 		this.sort();

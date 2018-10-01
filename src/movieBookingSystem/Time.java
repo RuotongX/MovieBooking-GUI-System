@@ -1,4 +1,10 @@
 package movieBookingSystem;
+/**
+ * This class creates the attributes for time and have the geter and setter
+ * The comparable interface is overrided in this class to calculate which time is earlyer
+ * @author 16921494
+ *
+ */
 
 public class Time implements Comparable{
 	private int hours;

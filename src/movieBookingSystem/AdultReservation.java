@@ -1,4 +1,9 @@
 package movieBookingSystem;
+/**
+ * This is the subclass for seatreservation which set the price value for adult.
+ * @author 16921494
+ *
+ */
 
 public class AdultReservation extends SeatReservation{
 	public AdultReservation(char row,int col) {
